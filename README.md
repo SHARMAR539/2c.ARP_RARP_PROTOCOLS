@@ -15,11 +15,69 @@ To write a python program for simulating ARP protocols using TCP.
 stored.
 4. Read the IP address which is send by the client.
 5. Map the IP address with its MAC address and return the MAC address to client.
-P
+```
+NAME: SANTHOSH S
+REG.NO: 212224100052
+```
 ## PROGRAM - ARP
+## CLIENT
+```
+import socket
+s = socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c, addr = s.accept()
+address = {"10.34.8.47":"168:34:21:98:2D:AD"}
+while True:
+    ip = c.recv(1024).decode()
+    try:
+        c.send(address[ip].encode())
+    except KeyError:
+        c.send("Not Found".encode())
+
+```
+## SERVER
+```
+import socket
+s = socket.socket()
+s.connect(('localhost',8000))
+while True:
+    ip = input("Enter logical Address : ")
+    s.send(ip.encode())
+    print("MAC Address:", s.recv(1024).decode())
+```
 ## OUPUT - ARP
+<img width="1281" height="286" alt="arp" src="https://github.com/user-attachments/assets/d8682899-51f2-48ba-825d-b76818bfc6c9" />
+
 ## PROGRAM - RARP
+## CLIENT
+```
+import socket
+s = socket.socket()
+s.bind(('localhost',9000))
+s.listen(5)
+c, addr = s.accept()
+address = {"168:34:21:98:2D:AD":"10.34.8.47"}
+while True:
+    ip = c.recv(1024).decode()
+    try:
+        c.send(address[ip].encode())
+    except KeyError:
+        c.send("Not Found".encode())
+```
+## SERVER
+```
+import socket
+s = socket.socket()
+s.connect(('localhost',9000))
+while True:
+    ip = input("Enter MAC Address : ")
+    s.send(ip.encode())
+    print("logical Address:", s.recv(1024).decode())
+```
 ## OUPUT -RARP
+<img width="1548" height="110" alt="arap" src="https://github.com/user-attachments/assets/95d9f9b1-4339-433d-b790-aa78b3e29f82" />
+
 ## RESULT
 Thus, the python program for simulating ARP protocols using TCP was successfully 
 executed.
