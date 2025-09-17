@@ -16,8 +16,8 @@ stored.
 4. Read the IP address which is send by the client.
 5. Map the IP address with its MAC address and return the MAC address to client.
 ```
-NAME: SANTHOSH S
-REG.NO: 212224100052
+NAME: SHARMA R
+REG.NO: 212224230261
 ```
 ## PROGRAM - ARP
 ## CLIENT
